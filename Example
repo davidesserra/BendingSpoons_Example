@@ -1,0 +1,37 @@
+var body: some View {
+        NavigationView {
+            TabView(selection: $selectedTab) {
+                HomeContentView(viewModel: viewModel, 
+                                user: user, 
+                                showingNewPostView: $showingNewPostView, 
+                                scrollToTop: $scrollToTop, 
+                                showingUserProfileView: $showingUserProfileView,
+                                showNotifications: $showNotifications)
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("Home")
+                    }
+                    .tag(0)
+                
+                SearchView(currentUser: user)
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                        Text("Search")
+                    }
+                    .tag(1)
+                
+                ForYouView()
+                    .tabItem {
+                        Image(systemName: "flame.fill")
+                        Text("Trending")
+                    }
+                    .tag(2)
+                
+                DiscoveryView()
+                    .tabItem {
+                        Image(systemName: "sparkles")
+                        Text("Discover")
+                    }
+                    .tag(3)
+            }
+...
